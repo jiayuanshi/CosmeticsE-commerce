@@ -7,9 +7,6 @@ import matplotlib
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')
 from matplotlib.pyplot import figure
-
-%matplotlib inline
-matplotlib.rcParams['figure.figsize'] = (12, 8)
     
 def event_type_dist(df):
     plt.figure(figsize=(10, 6))
@@ -28,6 +25,7 @@ def transaction_count_by_brand(df, top):
     plt.xlabel('Brand')
     plt.ylabel('Count')
     plt.show()
+    return temp
     
 def general_metrics(df):
     avg_transaction_per_session = np.sum(df[df['event_type']=='purchase'].groupby('user_session')['price'].sum())/df['user_session'].nunique()
